@@ -170,3 +170,11 @@
     - pgbouncer-install
     - pgbouncer-config
     - pgbouncer-systemd
+
+- name: Pgbouncer | Update net.ipv4.ip_local_port_range
+  sysctl:
+    name: net.ipv4.ip_local_port_range
+    value: "{{ pgbouncer_ip_local_port_range }}"
+    state: present
+  tags:
+    - pgbouncer-sysctl
